@@ -1,69 +1,72 @@
 import random
 
-words = list(["Abriter","Billard","Bretzel","Cithare","Djembé","Drapeau","Exemple","Fourmis","Grandir",
+
+def wordPickUp():
+    words = list(["Abriter","Billard","Bretzel","Cithare","Djembé","Drapeau","Exemple","Fourmis","Grandir",
               "Iceberg","Mondial","Notable","Oxygène","Panique","Pétrole","Commun","Avril","Mai","Juin",
-              "Juillet","Septembre","Decembre","Coq","Air","Sensiblement"])
+              "Juillet","Septembre","Decembre","Coq","Air","Sensiblement","Animal","Serpent","Python",
+              "java","css","ia","molengeek","Kadri"])
+    return random.choice((words)).upper()
 
-word = (random.choice((words)).upper())
-
-def underscore(mot , L = []):
-    r = ''
-    for i in mot:
+def underscore(word , L = []):
+    result = ''
+    for i in word:
         if i in L:
-            r += i + ' '
+            result += i + ' '
         else:
-            r += '_ '
+            result += '_ '
             
-    return r[:-1]
-#print(underscore(word))
- 
-print(word)
+    return result.strip()  #strip() supprime les "blank space"
+
 
 def EnterLetter():
-    letter = input("Entre une lettre : ")
-    if len(letter)>1 :
-        return EnterLetter()
-    else :
-        return letter.upper
+    while True:
+        letter = input("Please pick a letter : ").upper()
+        if len(letter) == 1 and letter.isalpha():
+            return letter
+        else:
+            print("Please enter just one letter please ;-) ")
 
 
-solution = word
-erreur = 0
-lettresBrulees = []
-affichage = underscore(solution)
-print( 'Mot à deviner : ' , affichage )
+solution = wordPickUp()
+print(solution)
+nb_error = 0
+lettersBurned = []
+display = underscore(solution)
+print(f"Word to guess : {display} " )
 while True :
-    while '_' in affichage and erreur < 5 :
-        lettre = (input("Entrez une lettre : ")).upper()
-        if lettre not in lettresBrulees:
-            lettresBrulees += [lettre]
+    while '_' in display and nb_error < 5 :
+#        lettre = (input("Entrez une lettre : ")).upper()
+        lettre = EnterLetter()
+        if lettre not in lettersBurned:
+            lettersBurned += [lettre]
             
         if lettre not in solution:
-            erreur +=1           
+            nb_error +=1           
         
-        affichage = underscore( solution , lettresBrulees )
-        print( 'Mot à deviner : ' , affichage , "Nombre d'erreur : " , erreur, " Lettres deja utilisées : ", lettresBrulees )
-        if erreur==0:
+        display = underscore( solution , lettersBurned )
+        print(f"Word to guess : {display}        Errors : {nb_error}         Letters already used : {lettersBurned} \n")
+        if nb_error==0:
+            print(" ============ \n")
+        elif nb_error==1:
             print(" ==========Y= ")
-        elif erreur==1:
+            print(" ||/       |  \n")
+        elif nb_error==2:
             print(" ==========Y= ")
             print(" ||/       |  ")
-        elif erreur==2:
+            print(" ||        0  \n")
+        elif nb_error==3:
             print(" ==========Y= ")
             print(" ||/       |  ")
             print(" ||        0  ")
-        elif erreur==3:
+            print(" ||       /|\ \n")
+        elif nb_error==4:
             print(" ==========Y= ")
             print(" ||/       |  ")
             print(" ||        0  ")
             print(" ||       /|\ ")
-        elif erreur==4:
-            print(" ==========Y= ")
-            print(" ||/       |  ")
-            print(" ||        0  ")
-            print(" ||       /|\ ")
-            print(" ||       / \  ")
-        elif erreur==5:  
+            print(" ||       / \  \n")
+        elif nb_error==5:  
             print(" ==========Y= ")
             print(" ||/       |  ")
             print(" ||        0  ")
@@ -72,10 +75,11 @@ while True :
             print(" ||            ")                 
             print("/||\      (x)  ")
             print("==============\n")
-            print("YOU LOOSE : Max error number reached")
+            print("YOU LOOSE")
+            print("Max error number reached")
             break
     else :    
-        print("YOU WIN")
+        print("\n")
         print(" ==========Y= ")
         print(" ||/          ")
         print(" ||     O U F ")
@@ -84,5 +88,6 @@ while True :
         print(" ||       /|\  ")                 
         print("/||\      / \  ")
         print("==============\n")
+        print("  - YOU WIN -      ")
     break
 
