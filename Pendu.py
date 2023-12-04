@@ -2,8 +2,8 @@ import random
 
 
 def wordPickUp():
-    words = list(["Abriter","Billard","Bretzel","Cithare","Djembé","Drapeau","Exemple","Fourmis","Grandir",
-              "Iceberg","Mondial","Notable","Oxygène","Panique","Pétrole","Commun","Avril","Mai","Juin",
+    words = list(["Abriter","Billard","Bretzel","Cithare","Djembe","Drapeau","Exemple","Fourmis","Grandir",
+              "Iceberg","Mondial","Notable","Oxygène","Panique","Petrole","Commun","Avril","Mai","Juin",
               "Juillet","Septembre","Decembre","Coq","Air","Sensiblement","Animal","Serpent","Python",
               "java","css","ia","molengeek","Kadri"])
     return random.choice((words)).upper()
@@ -33,6 +33,14 @@ def initGame():
     nb_error = 0
     lettersBurned = []
     display = underscore(solution)
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
     print(f"Word to guess : {display} " )
     while True :
         while '_' in display and nb_error < 5 :
@@ -45,6 +53,7 @@ def initGame():
                 nb_error +=1           
         
             display = underscore( solution , lettersBurned )
+        
             print(f"Word to guess : {display}        Errors : {nb_error}         Letters already used : {lettersBurned} \n")
             if nb_error==0 and '_' in display:
                 print(" ============ \n")
@@ -75,7 +84,7 @@ def initGame():
                 print(" ||            ")                 
                 print("/||\      (x)  ")
                 print("==============\n")
-                print("YOU LOOSE")
+                print("  -- YOU LOOSE -- ")
                 print("Max error number reached")
                 print(f"The word to guess was {solution}")
                 break
