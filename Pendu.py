@@ -28,7 +28,7 @@ def EnterLetter():
             print("Please enter just one letter please ;-) ")
 
 
-def initGame(stats_tab):
+def initGame(stats_tab,name):
     solution = wordPickUp()
     nb_error = 0
     lettersBurned = []
@@ -96,20 +96,20 @@ def initGame(stats_tab):
                 print("Max error number reached")
                 print(f"The word to guess was {solution}")
                 stats_tab['Lost'] += 1
-                replay = input("Play again ? (yes/no) ").lower()
+                replay = input(f"Would you like to play again {name} ? (yes/no) ").lower()
                 if replay in ['yes', 'y', 'ok', 'yeah','oui','o']:
-                    initGame(stats_tab)
+                    initGame(stats_tab,name)
                 else :
                     print("\n")
-                    print("THANKS FOR PLAYING MY GAME!")
+                    print("THANKS FOR PLAYING MY GAME {name}!")
                     print("\n")
-                    print(f"You played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
+                    print(f"{name},you played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
                     if stats_tab['Win'] > stats_tab['Lost']:
                         print("\n")
-                        print("Yeah You Are Good At This Game...")
+                        print(f"Yeah You Are Good At This Game {name}...")
                     else :
                         print("\n")
-                        print("Nice Try! You Will Do Better Next Time!")
+                        print(f"Nice Try {name}! You Will Do Better Next Time!")
                     exit()
             else :    
                 print("\n")
@@ -117,18 +117,18 @@ def initGame(stats_tab):
                 print(" ||/          ")
                 print(" ||     O U F ")
                 print(" ||           ")
-                print(" ||        0  ")  
-                print(" ||       /|\  ")                 
+                print(" ||       \0/  ")  
+                print(" ||        |  ")                 
                 print("/||\      / \  ")
                 print("==============\n")
                 print("  - YOU WIN -      ")
                 stats_tab['Win'] += 1  
-                replay = input("Play again ? (yes/no) ").lower()
+                replay = input(f"Would you like to play again {name} ? (yes/no) ").lower()
                 if replay in ['yes', 'y', 'ye', 'yo', 'ok', 'yeah','oui','o']:
-                    initGame(stats_tab)
+                    initGame(stats_tab,name)
                 else :
                     print("\n")
-                    print("THANKS FOR PLAYING MY GAME!")
+                    print(f"THANKS FOR PLAYING MY GAME {name}!")
                     print("\n")
                     print(f"You played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
                     if stats_tab['Win'] > stats_tab['Lost']:
@@ -146,6 +146,16 @@ def initGame(stats_tab):
 
 
 stats = {'Games': 0, 'Win': 0, 'Lost': 0}
-initGame(stats)
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+print("\n")
+name = input("enter your name : ")
+initGame(stats,name)
     
 
