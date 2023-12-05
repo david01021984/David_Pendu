@@ -155,7 +155,7 @@ print("\n")
 print("\n")
 print("\n")
 print("\n")
-name = input("enter your name : ")
+name = input("Please enter your name : ")
 initGame(stats,name)
     
 
