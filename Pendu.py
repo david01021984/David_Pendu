@@ -1,5 +1,5 @@
 import random
-
+import time
 
 def wordPickUp():
     words = list(["Abriter","Billard","Bretzel","Cithare","Djembe","Drapeau","Exemple","Fourmis","Grandir",
@@ -30,10 +30,10 @@ def EnterLetter():
 
 def initGame(stats_tab):
     solution = wordPickUp()
-    #print(solution)
     nb_error = 0
     lettersBurned = []
     display = underscore(solution)
+
     print("\n")
     print("\n")
     print("\n")
@@ -41,13 +41,18 @@ def initGame(stats_tab):
     print("\n")
     print("\n")
     print("\n")
-    print(f"You already played : {stats_tab['Games']} with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print(f"You already played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
     print("\n")
     print(f"Word to guess : {display} " )
+
     stats_tab['Games'] += 1
+
     while True :
         while '_' in display and nb_error < 5 :
-#        letter = (input("Entrez une letter : ")).upper()
             letter = EnterLetter()
             if letter not in lettersBurned:
                 lettersBurned += [letter]
@@ -79,12 +84,12 @@ def initGame(stats_tab):
                 print(" ||       /|\ ")
                 print(" ||       / \  \n")
             elif nb_error==5 and '_' in display:  
-                print(" ==========Y= ")
-                print(" ||/       |  ")
+                print(" ============ ")
+                print(" ||/       Y  ")
+                print(" ||        |  ")
                 print(" ||        0  ")
                 print(" ||       /|\ ")
-                print(" ||        |\  ")  
-                print(" ||            ")                 
+                print(" ||        |\  ")                 
                 print("/||\      (x)  ")
                 print("==============\n")
                 print("  -- YOU LOOSE -- ")
@@ -92,9 +97,19 @@ def initGame(stats_tab):
                 print(f"The word to guess was {solution}")
                 stats_tab['Lost'] += 1
                 replay = input("Play again ? (yes/no) ").lower()
-                if replay == 'yes':
+                if replay in ['yes', 'y', 'ok', 'yeah','oui','o']:
                     initGame(stats_tab)
                 else :
+                    print("\n")
+                    print("THANKS FOR PLAYING MY GAME!")
+                    print("\n")
+                    print(f"You played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
+                    if stats_tab['Win'] > stats_tab['Lost']:
+                        print("\n")
+                        print("Yeah You Are Good At This Game...")
+                    else :
+                        print("\n")
+                        print("Nice Try! You Will Do Better Next Time!")
                     exit()
             else :    
                 print("\n")
@@ -109,14 +124,24 @@ def initGame(stats_tab):
                 print("  - YOU WIN -      ")
                 stats_tab['Win'] += 1  
                 replay = input("Play again ? (yes/no) ").lower()
-                if replay == 'yes':
+                if replay in ['yes', 'y', 'ye', 'yo', 'ok', 'yeah','oui','o']:
                     initGame(stats_tab)
                 else :
+                    print("\n")
+                    print("THANKS FOR PLAYING MY GAME!")
+                    print("\n")
+                    print(f"You played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
+                    if stats_tab['Win'] > stats_tab['Lost']:
+                        print("\n")
+                        print("Yeah You Are Good At This Game...")
+                    else :
+                        print("\n")
+                        print("Nice Try! You Will Do Better Next Time!")
                     exit()
                              
             
         
-        #print(stats_tab)
+        
         
 
 
