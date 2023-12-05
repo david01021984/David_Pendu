@@ -8,10 +8,10 @@ def wordPickUp():
               "java","css","ia","molengeek","Kadri"])
     return random.choice((words)).upper()
 
-def underscore(word , L = []):
+def underscore(word , LB = []):
     result = ''
     for i in word:
-        if i in L:
+        if i in LB:
             result += i + ' '
         else:
             result += '_ '
@@ -27,9 +27,11 @@ def EnterLetter():
         else:
             print("Please enter just one letter please ;-) ")
 
+
 def initGame():
     solution = wordPickUp()
-#print(solution)
+    #print(solution)
+    stats = {'Games': 0, 'Win': 0, 'Lost': 0}
     nb_error = 0
     lettersBurned = []
     display = underscore(solution)
@@ -40,6 +42,7 @@ def initGame():
     print("\n")
     print("\n")
     print("\n")
+    print(f"You already played : {stats['Games']} with {stats['Win']} wins and {stats['Lost']} lost")
     print("\n")
     print(f"Word to guess : {display} " )
     while True :
@@ -87,6 +90,7 @@ def initGame():
                 print("  -- YOU LOOSE -- ")
                 print("Max error number reached")
                 print(f"The word to guess was {solution}")
+                stats['Lost'] += 1
                 break
         else :    
             print("\n")
@@ -99,6 +103,8 @@ def initGame():
             print("/||\      / \  ")
             print("==============\n")
             print("  - YOU WIN -      ")
+            stats['Win'] += 1
         break
+    stats['Games'] += 1
 
 initGame()
