@@ -133,10 +133,10 @@ def initGame(stats_tab,name):
                     print(f"You played {stats_tab['Games']} games with {stats_tab['Win']} wins and {stats_tab['Lost']} lost")
                     if stats_tab['Win'] > stats_tab['Lost']:
                         print("\n")
-                        print("Yeah You Are Good At This Game...")
+                        print(f"Yeah You Are Good At This Game {name}...")
                     else :
                         print("\n")
-                        print("Nice Try! You Will Do Better Next Time!")
+                        print(f"Nice Try! You Will Do Better Next Time {name}!")
                     exit()
                              
             
